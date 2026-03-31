@@ -1,0 +1,330 @@
+Database:
+-----------
+It is an organized collection of data. Data can be manipulated very easily.
+
+Relational DBMS 
+----------------
+>> The data is being stored in form of Tables (rows and col).
+>> SQL is needed to work with it. 
+>> Ex: MySQL, PostgreSQl, Oracle....
+
+Database Management System, NoSQL DBMS
+---------------------------
+>> Data stored as Documents.(JSON)
+>> SQL is not Needed.
+>> Ex: MongoDB, MariaDB.....
+
+SQL --> Structured Query Language 
+-----------------------------------
+Syntax
+-------
+>> SQL is case-insensitive.(a=A)
+SELECT * FROM tbname;
+select * from tbname;
+>> SQL query should end with ;
+
+MySQL 
+------
+>> Open source Relational DBMS
+
+Database ----> Tables ----> Data
+(Schema)
+
+Database ---> Collection of tables 
+Table ---> it stores information about an entity
+Column ---> attributes of that table.
+
+Datatypes 
+-----------
+Numeric Datatypes 
+--------------------
+INT ---> whole (4 BYTES) -2147483647 to 2147483647
+BIGINT ---> LARGE WHOLE NUMBERS
+FLOAT ---> Decimals 
+DOUBLE ---> Large Decimals 
+
+STRING Datatypes 
+-----------------
+CHAR(n) ---> fixed length Character String. Ex: char(5) --> "Hello", "World", "Hi"
+VARCHAR(n) --> Variable length Character String. Ex: varchar(5) --> "Hi", "Hello", "Priyanka"
+TEXT --> paragraphs
+
+BOOLEAN 
+-------
+boolean --> 1 or 0
+
+DATE and TIME 
+----------------
+DATE --> "yyyy-mm-dd". Ex: "2026-03-16"
+TIME --> "HH:MM:SS". Ex: "12:12:56"
+DATETIME ---> Both
+
+Operators
+----------
+Comparison
+------------
+=
+!=, <>
+<
+>
+<=
+>=
+
+BETWEEN 
+----------
+>> Used for range filtering(inclusive range)
+Ex: ..... WHERE col BETWEEN val1 and val2;
+
+IN Operators
+--------------
+>> IN and NOT IN
+>> matches multiple value. (replaces multiple OR operators).
+Ex: .... WHERE col in (val1,val2....);
+
+LIKE Operator 
+--------------
+>> Pattern Matching
+>> .... WHERE strCol LIKE "pattern";
+
+Wildcards:
+% ---> it matches any number of chars(0 to inf).
+_ ---> it matches only one char.
+
+Starts with n ---> "n%" --> "naveen", "nine", "n".
+Ends with r ---> "%r" --> "roar", "r "
+"__m" --> "ram", "bheem"
+
+Sorting
+----------
+>>Arranging
+Ex: ..... ORDER BY col ASC/DESC;
+
+Limit/Offset
+-------------
+>> Limiting the number of records while retriving data.
+Ex:....... LIMIT num OFFSET num;
+
+Logical Operators
+-------------------
+AND ---> True ---> Both are True 
+OR ---> True --> Anyone is True 
+NOT ---> True --> False
+
+Keys and Constraint 
+--------------------
+Primary Key ---> It is used to identify the records uniquely. duplicates are not allowed and null values are also not allowed.
+
+Foreign Key ---> Links one table to another. Maintains referential Integrity.
+FOREIGN KEY (col name) REFERENCES tab(col).
+
+NOT NULL --> Column cannot have NULL values.
+
+UNIQUE --> Duplicates are not allowed.
+
+AUTO_INCREMENT --> increments numeric value by 1 row by row.
+
+CHECK ---> Restricrts value based on a condition.
+
+DEFAULT ---> Sets default value
+
+
+Queries 
+---------
+To Create Database ---> CREATE DATABASE dbname;
+To Select Database ----> USE databaseName;
+To Create Table   ---> CREATE TABLE tbname(
+    col1 datatype constraint,
+    col2 datatype ....,
+    col3
+    .
+    .
+);
+
+To Create data ---> INSERT INTO tbname (col details) VALUES (row1),(row2)...;
+To retrive data ---> SELECT (col details --> *) FROM tbName;
+To Update a record --> UPDATE tbname SET col=value;
+To delete record --> DELETE FROM tbname;
+To delete all the records ---> TRUNCATE TABLE tbname;
+
+SQL_SAFE_UPDATES ---> When it is turned on you can update only 1 row and WHERE clause is must, use only PK col.
+
+CRUD operation (only on data)
+-----------------
+Create ---> INSERT
+Read ---> SELECT
+Update --> UPDATE
+Delete --> DELETE
+
+ALTER 
+-------
+>> It is used to modify an existing table.
+To add a new col --->  ALTER TABLE tbname ADD COLUMN coldetail;
+multiple col ---> ALTER TABLE tbname ADD COLUMN (coldetail, coldetail,....)
+To add a col with pos ---> ALTER TABLE tbname ADD coldetails AFTER col; (FIRST)
+To change datatype --> ALTER TABLE tbname MODIFY colname datatype;
+To Rename column ---> ALTER TABLE tbname RENAME COLUMN col to newName;
+To Drop a column ---> ALTER TABLE tbname DROP COLUMN col;
+
+To rename a table ---> ALTER TABLE tbanem RENAME TO newname;
+To Drop a table ---> DROP TABLE tbname;
+To drop database --> DROP DATABASE dbname;  
+
+WHERE
+------
+it is used to filter the records.
+Ex: SELECT, UPDATE, DELETE...... WHERE condition;
+
+Funtions of MySQL 
+-----------------
+>> In built operations that takes input and return output...
+
+Numeric Functions
+------------------
+ROUND(Dec,dp) ----> It rounds off a decimal number... 
+Ex: ROUND(22.764754754,4) --> 22.7648
+FLOOR(Dec) ---> It removes all the decimal places. FLOOR(44.999999)--> 44
+CEIL(Floor) ---> It rounds off the dec to next Int.
+ABS() --> finds out absolute number. 9 --> 9
+MOD(num1, num2) --> it returns reminder. MOD(55,4) --> 3
+POWER(), POW() 
+SQRT(num)
+
+STRING Functions
+------------------
+CONCAT(str1,str2,.....)---> attaching multiple strings....
+Length(str)---> length of that string.
+UPPER()
+LOWER()
+TRIM, LTRIM, RTRIM
+SUBSTRING(str, start, len) "Hello World...!"
+REPLACE(str, old, new)  "Hello world" --> "Hellop India"
+
+Date Functions 
+--------------
+NOW() ---> currentdate and time 
+CURDATE()
+CURTIME()
+DATEDIFF(d1,d2)
+
+
+Joins 
+---------
+>> Used to combine rows from 2 or more tables.
+
+Inner Join 
+-----------
+>> It returns only matching rows.
+>> Non - matching rows are not selected.
+Ex: SELECT col details FROM tb1 INNER JOIN tb2 ON (relared col);
+
+LEFT OUTER JOIN 
+----------------
+>> It returns all records from left table.
+>> It matches record from right table.
+Ex: SELECT col details FROM tb1 LEFT JOIN tb2 ON (relared col);
+
+RIGHT OUTER JOIN 
+-----------------
+>> It returns all records from right table.
+>> It matches record from left table.
+Ex: SELECT col details FROM tb1 RIGHT JOIN tb2 ON (relared col);
+
+FULL OUTER JOIN 
+---------------
+>> It returns all records from both table.
+SELECT col details FROM tb1 LEFT JOIN tb2 ON (relared col)
+union
+SELECT col details FROM tb1 RIGHT JOIN tb2 ON (relared col);
+
+CROSS JOIN 
+------------
+>> It matches all the records from left table with all the records from right table.
+
+Aggregation and Grouping 
+-------------------------
+Aggregation:
+Performing Calculations on multiple rows and fetch a single result.
+
+COUNT() --> Count the rows.
+MAX() --> Largest value
+MIN() --> Smallest Value
+AVG() --> finds out average mark;
+SUM() --> Finds out sum
+
+Grouping
+---------
+>> GROUP BY
+Ex: SELECT aggrCol FROM tbname GROUP BY col;
+
+HAVING 
+--------
+>> Used to filter groups.
+
+WHERE --> rows 
+HAVING --> Groups
+
+Subqueries 
+------------
+>> A subquery is a query inside another.
+
+Inner query --> gives data 
+Outer query --> uses that data.
+
+Ex: ....(subquery);
+
+Single Row Subqueries
+----------------------
+>> It returns single row.
+Ex: SELECT * from studentmark 
+where marks>(SELECT avg(marks) from studentmark);
+
+Multi Row subquery
+------------------
+>> It returns multiple row.
+
+ANY 
+ALL 
+
+Ex: select * from studentmark 
+where marks> ANY (select marks from studentmark 
+where department="Mathematics"); 
+
+Correlated  Subqueries
+-----------------------
+>> Outer query depends on value from inner query. Inner query depends on value from outer query.
+subquery is getting executed for each and every rows.
+
+
+View 
+-----
+>> It is a virtual Table created from a query.
+>> will not store actual data.
+>> It shows data from real table.
+
+To Create View ---> CREATE VIEW viewName AS SELECT...
+--> Security ---> hides sensitive column.
+
+
+name, email, age, password 
+user ---> userView --(name, email)
+admin ---> adminView --(age,pass)
+
+
+Python ---> MySQL server 
+-------------------------
+package ---> mysql-connector-python==8.0.33
+pip install pckName==version
+
+conn=mysql.connector.connect(
+    host="host",
+    user="username",
+    password="*****",
+    port=number,
+    database="dbname"
+)
+
+create --->  name, phone --> adding contact
+view contacts ---> all contacts asc(names)
+search contact --> name --> show matching detail.
+update ---> name or mobile ---> choose the contact ---> name, phone ---> updatiopn 
+delete ---> name...
